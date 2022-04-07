@@ -1,10 +1,11 @@
+const modalOverlay = document.querySelector(".overlay");
 
-export const openModal = (modalEl, overlayEl) => {
+export const openModal = (modalEl) => {
   modalEl.style.display = "block";
-  overlayEl.style.display = "block";
+  modalOverlay.style.display = "block";
 }
 
-export const closeModal = (modalEl, overlayEl) => {
+export const closeModal = (modalEl) => {
   modalEl.style.display = "none";
-  overlayEl.style.display = "none";
+  modalOverlay.style.display = "none";
 }
