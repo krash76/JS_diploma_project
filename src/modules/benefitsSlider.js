@@ -5,26 +5,24 @@ export const benefitsSlider = () => {
   let slidersArray = Array.from(sliders);
 
   
-  const disactiveSliders = () => {
-    for (let i = 3; i< sliders.length; i++) {
+ 
+  for (let i = 3; i< sliders.length; i++) {
       sliders[i].style.display = "none";
     }
-  }
   
-  const activeSliders = () => {
     for (let i = 0; i < sliders.length/2; i++) {
       sliders[i].style.display = "block";
     }
-  }
+  
 
   let nextIndex;
 
   function isActive(slide) {
-    return slide.className === "benefits__item active";
+    return slide.style.display === "block";
   }
   
   function activate(slide) {
-    slide.className = "benefits__item active";
+    slide.style.display = "none";
   }
 
   rightArrow.addEventListener("click", () => {
