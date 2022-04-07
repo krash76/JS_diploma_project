@@ -1,6 +1,5 @@
 
 export const openModal = (modalEl, overlayEl) => {
-  
   modalEl.style.display = "block";
   overlayEl.style.display = "block";
 }

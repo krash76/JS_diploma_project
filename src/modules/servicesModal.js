@@ -12,17 +12,11 @@ export const servicesModal = () => {
     btn.addEventListener("click", (e) => {
       e.preventDefault();
       openModal(modal, modalOverlay);
-     /* modal.style.display = "block";
-      modalOverlay.style.display = "block";
-      */
-    });
+     });
   });
   
   modalCloseBtn.addEventListener("click", () => {
-      
     closeModal(modal, modalOverlay);
-      /*modal.style.display = "none";
-      modalOverlay.style.display = "none";*/
   });
 };
 
