@@ -16,7 +16,7 @@
   \******************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _modules_headerModal_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/headerModal.js */ \"./modules/headerModal.js\");\n/* harmony import */ var _modules_timer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/timer.js */ \"./modules/timer.js\");\n\r\n\r\n\r\n\r\n(0,_modules_headerModal_js__WEBPACK_IMPORTED_MODULE_0__.headerModal)();\r\n(0,_modules_timer_js__WEBPACK_IMPORTED_MODULE_1__.timer)(\"11 July 2022\");\n\n//# sourceURL=webpack:///./index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _modules_headerModal_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/headerModal.js */ \"./modules/headerModal.js\");\n/* harmony import */ var _modules_timer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/timer.js */ \"./modules/timer.js\");\n/* harmony import */ var _modules_servicesModal_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/servicesModal.js */ \"./modules/servicesModal.js\");\n\r\n\r\n\r\n\r\n\r\n(0,_modules_headerModal_js__WEBPACK_IMPORTED_MODULE_0__.headerModal)();\r\n(0,_modules_timer_js__WEBPACK_IMPORTED_MODULE_1__.timer)(\"11 July 2022\");\r\n(0,_modules_servicesModal_js__WEBPACK_IMPORTED_MODULE_2__.servicesModal)();\n\n//# sourceURL=webpack:///./index.js?");
 
 /***/ }),
 
@@ -27,6 +27,16 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _mod
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"headerModal\": () => (/* binding */ headerModal)\n/* harmony export */ });\nconst headerModal = () => {\r\n  const modal = document.querySelector(\".header-modal\");\r\n  const callBtn = document.querySelector(\".button\");\r\n  const modalOverlay = document.querySelector(\".overlay\");\r\n  const modalCloseBtn = document.querySelector(\".header-modal__close\");\r\n\r\n  callBtn.addEventListener(\"click\", (e) => {\r\n    e.preventDefault();\r\n    modal.style.display = \"block\";\r\n    modalOverlay.style.display = \"block\";\r\n  });\r\n    \r\n  modalCloseBtn.addEventListener(\"click\", () => {\r\n    modal.style.display = \"none\";\r\n    modalOverlay.style.display = \"none\";\r\n  })\r\n};\r\n\r\n\n\n//# sourceURL=webpack:///./modules/headerModal.js?");
+
+/***/ }),
+
+/***/ "./modules/servicesModal.js":
+/*!**********************************!*\
+  !*** ./modules/servicesModal.js ***!
+  \**********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"servicesModal\": () => (/* binding */ servicesModal)\n/* harmony export */ });\nconst servicesModal = () => {\r\n  const modal = document.querySelector(\".services-modal\");\r\n  const serviceBtns = document.querySelectorAll(\".service-button\");\r\n  const modalOverlay = document.querySelector(\".overlay\");\r\n  const modalCloseBtn = document.querySelector(\".services-modal__close\");\r\n\r\n  serviceBtns.forEach((btn) => {\r\n    btn.addEventListener(\"click\", (e) => {\r\n      e.preventDefault();\r\n      modal.style.display = \"block\";\r\n      modalOverlay.style.display = \"block\";\r\n    });\r\n  });\r\n  \r\n  modalCloseBtn.addEventListener(\"click\", () => {\r\n      modal.style.display = \"none\";\r\n      modalOverlay.style.display = \"none\";\r\n  });\r\n};\r\n\r\n\n\n//# sourceURL=webpack:///./modules/servicesModal.js?");
 
 /***/ }),
 
