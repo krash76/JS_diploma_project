@@ -1,3 +1,6 @@
+import { openModal } from "./modalFunc";
+import { closeModal } from "./modalFunc";
+
 export const headerModal = () => {
   const modal = document.querySelector(".header-modal");
   const callBtn = document.querySelector(".button");
@@ -6,13 +9,11 @@ export const headerModal = () => {
 
   callBtn.addEventListener("click", (e) => {
     e.preventDefault();
-    modal.style.display = "block";
-    modalOverlay.style.display = "block";
+    openModal(modal, modalOverlay)
   });
     
   modalCloseBtn.addEventListener("click", () => {
-    modal.style.display = "none";
-    modalOverlay.style.display = "none";
+    closeModal(modal, modalOverlay)
   })
 };
 
