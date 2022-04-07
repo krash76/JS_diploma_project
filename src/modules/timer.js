@@ -36,6 +36,12 @@ export const timer = (deadline) => {
       getTime.seconds = `0${getTime.seconds.toString()}`;
     };
   
+    if(getTime.timeRest > 0) {
+        setTimeout(updateClock, 1000);
+      } else {
+        span.textContent = "00";
+      };
+
     allCounts.forEach((count) => {
       if (count.classList.contains("count_1")) {
           getSpan(count);
@@ -50,18 +56,10 @@ export const timer = (deadline) => {
           getSpan(count);
           span.textContent = getTime.seconds;
       };
-
-      if(getTime.timeRest > 0) {
-        setTimeout(updateClock, 1000);
-      } else {
-        span.textContent = "00";
-      };
-
     });
   };
 
   updateClock();
-  
 };
-
+  
 
