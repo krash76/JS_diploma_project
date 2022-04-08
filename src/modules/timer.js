@@ -36,27 +36,30 @@ export const timer = (deadline) => {
       getTime.seconds = `0${getTime.seconds.toString()}`;
     };
   
-    if(getTime.timeRest > 0) {
-        setTimeout(updateClock, 1000);
-      } else {
-        span.textContent = "00";
-      };
-
-    allCounts.forEach((count) => {
-      if (count.classList.contains("count_1")) {
+    if(Math.floor(getTime.timeRest) > 0) {
+      allCounts.forEach((count) => {
+        if (count.classList.contains("count_1")) {
           getSpan(count);
           span.textContent = getTime.days;
-      } else if (count.classList.contains("count_2")) {
+        } else if (count.classList.contains("count_2")) {
           getSpan(count);
           span.textContent = getTime.hours;
-      } else if (count.classList.contains("count_3")) {
+        } else if (count.classList.contains("count_3")) {
           getSpan(count);
           span.textContent = getTime.minutes;
-      } else if (count.classList.contains("count_4")) {
+        } else if (count.classList.contains("count_4")) {
           getSpan(count);
           span.textContent = getTime.seconds;
-      };
-    });
+        }
+      });
+
+      setTimeout(updateClock, 1000);
+    } else {
+      allCounts.forEach((count) => {
+        getSpan(count);
+        span.textContent = "00";
+      })
+    };
   };
 
   updateClock();
