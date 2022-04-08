@@ -3,6 +3,7 @@ import {timer} from "./modules/timer.js";
 import {servicesModal} from "./modules/servicesModal.js";
 import {certificateModal} from "./modules/certificateModal.js";
 import {benefitsSlider} from "./modules/benefitsSlider.js";
+import {toScrollUp} from "./modules/scroll.js";
 
 
 const body = document.querySelector("body");
@@ -27,3 +28,4 @@ timer("07 Aprile 2022");
 servicesModal();
 certificateModal();
 benefitsSlider();
+toScrollUp();
