@@ -1,6 +1,9 @@
 export const timer = (deadline) => {
  
   const allCounts = document.querySelectorAll(".count");
+  const countdownText = document.querySelector(".countdown-text");
+  countdownText.insertAdjacentHTML("afterbegin", `<span>До конца акции осталось:</span>`);
+  
   let span;
 
   const getSpan =(el) => {
@@ -37,6 +40,7 @@ export const timer = (deadline) => {
     };
   
     if(Math.floor(getTime.timeRest) > 0) {
+      					
       allCounts.forEach((count) => {
         if (count.classList.contains("count_1")) {
           getSpan(count);
@@ -55,6 +59,8 @@ export const timer = (deadline) => {
 
       setTimeout(updateClock, 1000);
     } else {
+      getSpan(countdownText);
+      span.textContent = "На данный момент акция закончилась!";
       allCounts.forEach((count) => {
         getSpan(count);
         span.textContent = "00";

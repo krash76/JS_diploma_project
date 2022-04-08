@@ -23,7 +23,7 @@ body.insertAdjacentHTML("beforeend",
 ); 
 
 headerModal();
-timer("09 Aprile 2022");
+timer("11 July 2022");
 servicesModal();
 certificateModal();
 benefitsSlider();
