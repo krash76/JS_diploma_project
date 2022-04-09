@@ -6,13 +6,6 @@ export const benefitsSlider = () => {
   let slide_2Index;
   let slide_3Index ;
 
-  const getNextSlidesIndex = () => {
-   slide_2Index = currentSlideIndex + 1;
-   slide_3Index = slide_2Index + 1;
-  }
-
-  
-
   const isActive = () => {
     slides.forEach((slide) => {
       if (slide.classList.contains("active")){
@@ -55,11 +48,18 @@ export const benefitsSlider = () => {
       };
       
       if (currentSlideIndex < 0) {
-      currentSlideIndex = slides.length - 1;
-      
+        currentSlideIndex = slides.length - 1;
+        slide_2Index = 0;
+        slide_3Index = slide_2Index + 1;
       };
+     /*  if (currentSlideIndex < 0) {
+        currentSlideIndex = slides.length - 1;
+        slide_2Index = 0;
+        slide_3Index = slide_2Index + 1;
+      };*/
 
-          console.log (currentSlideIndex, slide_2Index, slide_3Index)
+
+      console.log (currentSlideIndex, slide_2Index, slide_3Index)
 
       
       
@@ -71,7 +71,6 @@ export const benefitsSlider = () => {
       prevSlide(slides, currentSlideIndex);
       prevSlide(slides, slide_2Index);
       prevSlide(slides, slide_3Index);
-
       nextSlide(slides,currentSlideIndex);
       isActive();
     }
@@ -93,7 +92,7 @@ export const benefitsSlider = () => {
           isActive();
         } else if (window.screen.width >= 576 ) {
           
-          console.log (currentSlideIndex, slide_2Index, slide_3Index);
+        console.log (currentSlideIndex, slide_2Index, slide_3Index);
 
           prevSlide(slides, currentSlideIndex);
           prevSlide(slides, slide_2Index);
@@ -116,9 +115,6 @@ export const benefitsSlider = () => {
           prevSlide(slides, slide_2Index);
           prevSlide(slides, slide_3Index);
           currentSlideIndex--;
-          if (currentSlideIndex < 0) {
-            currentSlideIndex = slides.length - 1;
-          };
           showSlides();
 
         }
