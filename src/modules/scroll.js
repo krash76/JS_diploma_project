@@ -11,7 +11,7 @@ export const toScrollUp = () => {
     if (scrolled > 0) {
       window.scrollTo(0, scrolled);
       scrolled = scrolled - 200;
-      timer = setTimeout(scrollToTop, 20)
+      timer = setTimeout(scrollToTop, 20);
     } else {
       clearTimeout(timer);
       window.scrollTo(0, 0);
@@ -21,7 +21,7 @@ export const toScrollUp = () => {
   document.addEventListener("scroll", () => {
     secondSectionDiv.getBoundingClientRect();
     if (secondSectionDiv.getBoundingClientRect().top <= 0) {
-      scrollBtn.style.display = "block"
+      scrollBtn.style.display = "block";
     } else {
       scrollBtn.style.display = "none";
     }
