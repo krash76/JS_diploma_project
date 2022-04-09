@@ -2,7 +2,6 @@ export const benefitsSlider = () => {
   const arrows = document.querySelectorAll(".benefits-arrows");
   const slides = document.querySelectorAll(".benefits__item");
   let currentSlideIndex = 0;
- 
   let slide_2Index;
   let slide_3Index ;
 
@@ -22,13 +21,11 @@ export const benefitsSlider = () => {
   };
 
   const nextSlide = (elems, index) => {
-    elems[index].classList.add("active");
+    elems[index].classList.add("active")
   };
   
   const showSlides = () => {
-  
     if (window.screen.width >= 576 ) {
- 
       if (currentSlideIndex < slides.length - 2) {
         slide_2Index = currentSlideIndex + 1;
         slide_3Index = slide_2Index + 1;
@@ -46,23 +43,14 @@ export const benefitsSlider = () => {
         slide_2Index = currentSlideIndex + 1;
         slide_3Index = slide_2Index + 1;
       };
-      
       if (currentSlideIndex < 0) {
         currentSlideIndex = slides.length - 1;
         slide_2Index = 0;
         slide_3Index = slide_2Index + 1;
       };
-     /*  if (currentSlideIndex < 0) {
-        currentSlideIndex = slides.length - 1;
-        slide_2Index = 0;
-        slide_3Index = slide_2Index + 1;
-      };*/
+     
+      //console.log (currentSlideIndex, slide_2Index, slide_3Index)
 
-
-      console.log (currentSlideIndex, slide_2Index, slide_3Index)
-
-      
-      
       nextSlide(slides,currentSlideIndex);
       nextSlide(slides,slide_2Index);
       nextSlide(slides,slide_3Index);
@@ -91,9 +79,7 @@ export const benefitsSlider = () => {
           nextSlide(slides, currentSlideIndex);
           isActive();
         } else if (window.screen.width >= 576 ) {
-          
-        console.log (currentSlideIndex, slide_2Index, slide_3Index);
-
+        // console.log (currentSlideIndex, slide_2Index, slide_3Index);
           prevSlide(slides, currentSlideIndex);
           prevSlide(slides, slide_2Index);
           prevSlide(slides, slide_3Index);
@@ -110,27 +96,22 @@ export const benefitsSlider = () => {
           nextSlide(slides, currentSlideIndex);
           isActive(); 
         } else if (window.screen.width >= 576 ) {
-          
           prevSlide(slides, currentSlideIndex);
           prevSlide(slides, slide_2Index);
           prevSlide(slides, slide_3Index);
           currentSlideIndex--;
           showSlides();
-
         }
-        
       }
     })
   };
 
-
-  
   arrows.forEach((arrow) => {
     changeSlide(arrow)
-  })
+  });
     
   window.addEventListener("resize", () => {
     showSlides();
-  })
+  });
 
 };
