@@ -5,6 +5,7 @@ import {certificateModal} from "./modules/certificateModal.js";
 import {benefitsSlider} from "./modules/benefitsSlider.js";
 import {toScrollUp} from "./modules/scroll.js";
 import {calc} from "./modules/calc.js";
+import {servicesSlider} from "./modules/servicesSlider";
 
 const body = document.querySelector("body");
 
@@ -30,3 +31,4 @@ certificateModal();
 benefitsSlider();
 toScrollUp();
 calc();
+servicesSlider();

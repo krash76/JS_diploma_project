@@ -1,10 +1,9 @@
 export const benefitsSlider = () => {
   const arrows = document.querySelectorAll(".benefits-arrows");
   const slides = document.querySelectorAll(".benefits__item");
-  let currentSlideIndex = 0;
-  let slide_2Index;
-  let slide_3Index ;
 
+  let currentSlideIndex = 0;
+  
   const isActive = () => {
     slides.forEach((slide) => {
       if (slide.classList.contains("active")){
@@ -26,39 +25,22 @@ export const benefitsSlider = () => {
   
   const showSlides = () => {
     if (window.screen.width >= 576 ) {
-      if (currentSlideIndex < slides.length - 2) {
-        slide_2Index = currentSlideIndex + 1;
-        slide_3Index = slide_2Index + 1;
-      };
-      if (currentSlideIndex === slides.length-2) {
-        slide_2Index = currentSlideIndex + 1;  
-        slide_3Index = 0;
-      };
-      if (currentSlideIndex === slides.length-1) {
-        slide_2Index = 0;
-        slide_3Index = slide_2Index + 1;
-      };    
-      if (currentSlideIndex >= slides.length) {
+    
+      if (currentSlideIndex > 3) {
         currentSlideIndex = 0;
-        slide_2Index = currentSlideIndex + 1;
-        slide_3Index = slide_2Index + 1;
       };
-      if (currentSlideIndex < 0) {
-        currentSlideIndex = slides.length - 1;
-        slide_2Index = 0;
-        slide_3Index = slide_2Index + 1;
+      if (currentSlideIndex < 0 ) {
+        currentSlideIndex = 3 ;
       };
      
-      //console.log (currentSlideIndex, slide_2Index, slide_3Index)
-
       nextSlide(slides,currentSlideIndex);
-      nextSlide(slides,slide_2Index);
-      nextSlide(slides,slide_3Index);
+      nextSlide(slides,currentSlideIndex + 1);
+      nextSlide(slides,currentSlideIndex + 2);
       isActive();
     } else {
       prevSlide(slides, currentSlideIndex);
-      prevSlide(slides, slide_2Index);
-      prevSlide(slides, slide_3Index);
+      prevSlide(slides, currentSlideIndex + 1);
+      prevSlide(slides, currentSlideIndex + 2);
       nextSlide(slides,currentSlideIndex);
       isActive();
     }
@@ -74,16 +56,15 @@ export const benefitsSlider = () => {
           prevSlide(slides, currentSlideIndex);
           currentSlideIndex++;
           if (currentSlideIndex >= slides.length) {
-          currentSlideIndex = 0;
+            currentSlideIndex = 0;
           };
           nextSlide(slides, currentSlideIndex);
           isActive();
         } else if (window.screen.width >= 576 ) {
-        // console.log (currentSlideIndex, slide_2Index, slide_3Index);
           prevSlide(slides, currentSlideIndex);
-          prevSlide(slides, slide_2Index);
-          prevSlide(slides, slide_3Index);
-          currentSlideIndex++;
+          prevSlide(slides, currentSlideIndex + 1);
+          prevSlide(slides, currentSlideIndex + 2);
+          currentSlideIndex += 3;
           showSlides();
         }
       } else if (e.target.closest("div").matches(".benefits__arrow--left")) {
@@ -97,9 +78,9 @@ export const benefitsSlider = () => {
           isActive(); 
         } else if (window.screen.width >= 576 ) {
           prevSlide(slides, currentSlideIndex);
-          prevSlide(slides, slide_2Index);
-          prevSlide(slides, slide_3Index);
-          currentSlideIndex--;
+          prevSlide(slides, currentSlideIndex + 1);
+          prevSlide(slides, currentSlideIndex + 2);
+          currentSlideIndex -= 3;
           showSlides();
         }
       }
