@@ -1,3 +1,5 @@
+import {calc} from "./calc.js";
+
 export const forms = () => {
 
   const horisontalForms = document.querySelectorAll(".form-horizontal");
@@ -18,12 +20,23 @@ export const forms = () => {
     form.addEventListener("submit", (e) => {
       e.preventDefault();
       const formElements = form.querySelectorAll("input.form-control");
-     
-      const userData = {
-        name: nameInput.value,
-        tel: phoneInput.value
+      const body = document.querySelector("body");
+      let userData;
+      if (!body.classList.contains("balkony" )) {
+        userData = {
+          name: nameInput.value,
+          tel: phoneInput.value,
+        }
+      } else {
+        const calcTotal = document.getElementById("calc-total");
+        calc();
+        userData = {
+          name: nameInput.value,
+          tel: phoneInput.value,
+          calcTotal: calcTotal.value
+        }
       };
-      
+          
       const validate = (list) => {
         let success = true;
           list.forEach(input => {
@@ -71,5 +84,6 @@ export const forms = () => {
     })
   })
 }
-  
+ 
+
   
