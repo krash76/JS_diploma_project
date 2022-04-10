@@ -25,22 +25,29 @@ export const benefitsSlider = () => {
   
   const showSlides = () => {
     if (window.screen.width >= 576 ) {
-    
       if (currentSlideIndex > 3) {
-        currentSlideIndex = 0;
+        currentSlideIndex = 0
       };
       if (currentSlideIndex < 0 ) {
-        currentSlideIndex = 3 ;
+        currentSlideIndex = 3 
       };
      
-      nextSlide(slides,currentSlideIndex);
-      nextSlide(slides,currentSlideIndex + 1);
-      nextSlide(slides,currentSlideIndex + 2);
-      isActive();
+      slides.forEach((slide) => {
+        if (slide.classList.contains("active")) {
+          slide.classList.remove("active")
+          }
+        });
+        nextSlide(slides,currentSlideIndex);
+        nextSlide(slides,currentSlideIndex + 1);
+        nextSlide(slides,currentSlideIndex + 2);
+        isActive();
     } else {
-      prevSlide(slides, currentSlideIndex);
-      prevSlide(slides, currentSlideIndex + 1);
-      prevSlide(slides, currentSlideIndex + 2);
+      slides.forEach((slide) => {
+        if (slide.classList.contains("active")) {
+          slide.classList.remove("active")
+        }
+      });
+      
       nextSlide(slides,currentSlideIndex);
       isActive();
     }
