@@ -23,13 +23,13 @@ export const benefitsSlider = () => {
     elems[index].classList.add("active")
   };
   
-const toRemoveActive = () => {
-  slides.forEach((slide) => {
-        if (slide.classList.contains("active")) {
-          slide.classList.remove("active")
-        }
-      });
-}
+  const toRemoveActive = () => {
+    slides.forEach((slide) => {
+      if (slide.classList.contains("active")) {
+        slide.classList.remove("active")
+      }
+    })
+  };
 
   const showSlides = () => {
     if (window.screen.width >= 576 ) {
@@ -46,32 +46,29 @@ const toRemoveActive = () => {
         }
       };
      
-      slides.forEach((slide) => {
-        if (slide.classList.contains("active")) {
-          slide.classList.remove("active")
-          }
-        });
-        if (slides.length % 3 === 0) {
-          nextSlide(slides,currentSlideIndex);
-          nextSlide(slides,currentSlideIndex + 1);
-          nextSlide(slides,currentSlideIndex + 2);
-        } else if (slides.length % 3 === 2 && currentSlideIndex <= (slides.length-3)){
-          nextSlide(slides,currentSlideIndex);
-          nextSlide(slides,currentSlideIndex + 1);
-          nextSlide(slides,currentSlideIndex + 2);
-        } else if (slides.length % 3 === 2 && currentSlideIndex > (slides.length-3)){
-          nextSlide(slides,currentSlideIndex);
-          nextSlide(slides,currentSlideIndex + 1);
-        } else if (slides.length % 3 === 1 && currentSlideIndex <= (slides.length-2)){
-          nextSlide(slides,currentSlideIndex);
-          nextSlide(slides,currentSlideIndex + 1);
-          nextSlide(slides,currentSlideIndex + 2); 
-        } else if (slides.length % 3 === 1 && currentSlideIndex > (slides.length-2)){
-          nextSlide(slides,currentSlideIndex);
-        }
-        isActive();
-   
-      } else {
+      toRemoveActive();
+
+      if (slides.length % 3 === 0) {
+        nextSlide(slides,currentSlideIndex);
+        nextSlide(slides,currentSlideIndex + 1);
+        nextSlide(slides,currentSlideIndex + 2);
+      } else if (slides.length % 3 === 2 && currentSlideIndex <= (slides.length-3)){
+        nextSlide(slides,currentSlideIndex);
+        nextSlide(slides,currentSlideIndex + 1);
+        nextSlide(slides,currentSlideIndex + 2);
+      } else if (slides.length % 3 === 2 && currentSlideIndex > (slides.length-3)){
+        nextSlide(slides,currentSlideIndex);
+        nextSlide(slides,currentSlideIndex + 1);
+      } else if (slides.length % 3 === 1 && currentSlideIndex <= (slides.length-2)){
+        nextSlide(slides,currentSlideIndex);
+        nextSlide(slides,currentSlideIndex + 1);
+        nextSlide(slides,currentSlideIndex + 2); 
+      } else if (slides.length % 3 === 1 && currentSlideIndex > (slides.length-2)){
+        nextSlide(slides,currentSlideIndex);
+      };
+      isActive();
+  
+    } else {
       toRemoveActive();
       nextSlide(slides,currentSlideIndex);
       isActive();
@@ -94,8 +91,8 @@ const toRemoveActive = () => {
           isActive();
         } else if (window.screen.width >= 576 ) {
             toRemoveActive();
-          currentSlideIndex += 3;
-          showSlides();
+            currentSlideIndex += 3;
+            showSlides();
         }
       } else if (e.target.closest("div").matches(".benefits__arrow--left")) {
         if (window.screen.width < 576 ) {
@@ -107,7 +104,7 @@ const toRemoveActive = () => {
           nextSlide(slides, currentSlideIndex);
           isActive(); 
         } else if (window.screen.width >= 576 ) {
-            toRemoveActive();
+          toRemoveActive();
           currentSlideIndex -= 3;
           showSlides();
         }
