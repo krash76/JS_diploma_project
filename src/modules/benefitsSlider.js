@@ -25,11 +25,15 @@ export const benefitsSlider = () => {
   
   const showSlides = () => {
     if (window.screen.width >= 576 ) {
-      if (currentSlideIndex > 3) {
+      if ( currentSlideIndex > (slides.length-1)) {
         currentSlideIndex = 0
       };
       if (currentSlideIndex < 0 ) {
-        currentSlideIndex = 3 
+        if (slides.length % 3 === 2) {
+          currentSlideIndex = slides.length - 2
+        } else if (slides.length % 3 === 1) {
+          currentSlideIndex =  slides.length - 1
+        }
       };
      
       slides.forEach((slide) => {
@@ -37,11 +41,29 @@ export const benefitsSlider = () => {
           slide.classList.remove("active")
           }
         });
-        nextSlide(slides,currentSlideIndex);
-        nextSlide(slides,currentSlideIndex + 1);
-        nextSlide(slides,currentSlideIndex + 2);
+        if (slides.length % 3 === 0) {
+          nextSlide(slides,currentSlideIndex);
+          nextSlide(slides,currentSlideIndex + 1);
+          nextSlide(slides,currentSlideIndex + 2);
+        } else if (slides.length % 3 === 2 && currentSlideIndex <= (slides.length-3)){
+          nextSlide(slides,currentSlideIndex);
+          nextSlide(slides,currentSlideIndex + 1);
+          nextSlide(slides,currentSlideIndex + 2);
+        } else if (slides.length % 3 === 2 && currentSlideIndex > (slides.length-3)){
+          nextSlide(slides,currentSlideIndex);
+          nextSlide(slides,currentSlideIndex + 1);
+        } else if (slides.length % 3 === 1 && currentSlideIndex <= (slides.length-2)){
+          nextSlide(slides,currentSlideIndex);
+          nextSlide(slides,currentSlideIndex + 1);
+          nextSlide(slides,currentSlideIndex + 2); 
+        } else if (slides.length % 3 === 1 && currentSlideIndex > (slides.length-2)){
+          nextSlide(slides,currentSlideIndex);
+        }
+
         isActive();
-    } else {
+    
+    
+      } else {
       slides.forEach((slide) => {
         if (slide.classList.contains("active")) {
           slide.classList.remove("active")
@@ -68,9 +90,11 @@ export const benefitsSlider = () => {
           nextSlide(slides, currentSlideIndex);
           isActive();
         } else if (window.screen.width >= 576 ) {
-          prevSlide(slides, currentSlideIndex);
-          prevSlide(slides, currentSlideIndex + 1);
-          prevSlide(slides, currentSlideIndex + 2);
+            slides.forEach((slide) => {
+              if (slide.classList.contains("active")) {
+                slide.classList.remove("active")
+            }
+          });
           currentSlideIndex += 3;
           showSlides();
         }
@@ -84,9 +108,11 @@ export const benefitsSlider = () => {
           nextSlide(slides, currentSlideIndex);
           isActive(); 
         } else if (window.screen.width >= 576 ) {
-          prevSlide(slides, currentSlideIndex);
-          prevSlide(slides, currentSlideIndex + 1);
-          prevSlide(slides, currentSlideIndex + 2);
+            slides.forEach((slide) => {
+              if (slide.classList.contains("active")) {
+                slide.classList.remove("active")
+              }
+            });
           currentSlideIndex -= 3;
           showSlides();
         }
