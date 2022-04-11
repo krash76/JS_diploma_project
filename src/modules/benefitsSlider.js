@@ -23,6 +23,14 @@ export const benefitsSlider = () => {
     elems[index].classList.add("active")
   };
   
+const toRemoveActive = () => {
+  slides.forEach((slide) => {
+        if (slide.classList.contains("active")) {
+          slide.classList.remove("active")
+        }
+      });
+}
+
   const showSlides = () => {
     if (window.screen.width >= 576 ) {
       if ( currentSlideIndex > (slides.length-1)) {
@@ -33,6 +41,8 @@ export const benefitsSlider = () => {
           currentSlideIndex = slides.length - 2
         } else if (slides.length % 3 === 1) {
           currentSlideIndex =  slides.length - 1
+        } else if (slides.length % 3 === 0) {
+          currentSlideIndex =  slides.length - 3
         }
       };
      
@@ -59,17 +69,10 @@ export const benefitsSlider = () => {
         } else if (slides.length % 3 === 1 && currentSlideIndex > (slides.length-2)){
           nextSlide(slides,currentSlideIndex);
         }
-
         isActive();
-    
-    
+   
       } else {
-      slides.forEach((slide) => {
-        if (slide.classList.contains("active")) {
-          slide.classList.remove("active")
-        }
-      });
-      
+      toRemoveActive();
       nextSlide(slides,currentSlideIndex);
       isActive();
     }
@@ -90,11 +93,7 @@ export const benefitsSlider = () => {
           nextSlide(slides, currentSlideIndex);
           isActive();
         } else if (window.screen.width >= 576 ) {
-            slides.forEach((slide) => {
-              if (slide.classList.contains("active")) {
-                slide.classList.remove("active")
-            }
-          });
+            toRemoveActive();
           currentSlideIndex += 3;
           showSlides();
         }
@@ -108,11 +107,7 @@ export const benefitsSlider = () => {
           nextSlide(slides, currentSlideIndex);
           isActive(); 
         } else if (window.screen.width >= 576 ) {
-            slides.forEach((slide) => {
-              if (slide.classList.contains("active")) {
-                slide.classList.remove("active")
-              }
-            });
+            toRemoveActive();
           currentSlideIndex -= 3;
           showSlides();
         }
