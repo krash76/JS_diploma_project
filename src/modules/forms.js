@@ -1,8 +1,9 @@
 export const forms = () => {
 
-  const horisontalForms = document.querySelectorAll(".form-horizontal");
-
-  horisontalForms.forEach((form) => {
+  const allForms = document.querySelectorAll("form");
+  
+  allForms.forEach((form) => {
+    console.log(form)
     const nameInput = form.querySelector('input[name="fio"]');
     const phoneInput = form.querySelector('input[name="phone"]');
     const pageInput = form.querySelector('input[name="page"]');
@@ -17,6 +18,7 @@ export const forms = () => {
       };
 
     form.addEventListener("input", (e) => {
+      
       inputSuccess(e.target.value);
       if (e.target === nameInput) {
         e.target.value = e.target.value.replace(/[^а-яёa-z\s]/ig, "");
@@ -93,6 +95,3 @@ export const forms = () => {
     })
   })
 }
- 
-
-  
