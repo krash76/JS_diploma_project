@@ -1,5 +1,3 @@
-import {calc} from "./calc.js";
-
 export const forms = () => {
 
   const horisontalForms = document.querySelectorAll(".form-horizontal");
@@ -7,6 +5,8 @@ export const forms = () => {
   horisontalForms.forEach((form) => {
     const nameInput = form.querySelector('input[name="fio"]');
     const phoneInput = form.querySelector('input[name="phone"]');
+    const pageInput = form.querySelector('input[name="page"]');
+
     
     form.addEventListener("input", (e) => {
       if (e.target === nameInput) {
@@ -20,19 +20,20 @@ export const forms = () => {
     form.addEventListener("submit", (e) => {
       e.preventDefault();
       const formElements = form.querySelectorAll("input.form-control");
-      const body = document.querySelector("body");
       let userData;
-      if (!body.classList.contains("balkony" )) {
+     
+      if (pageInput.value !== "Балконы"){
         userData = {
           name: nameInput.value,
           tel: phoneInput.value,
+          page:pageInput.value
         }
       } else {
         const calcTotal = document.getElementById("calc-total");
-        calc();
         userData = {
           name: nameInput.value,
           tel: phoneInput.value,
+          page:pageInput.value,
           calcTotal: calcTotal.value
         }
       };
@@ -43,7 +44,7 @@ export const forms = () => {
           inputSuccess(input);
           if (!input.classList.contains("success")) {
             success = false;
-          };
+          } 
         })
         return success
       };
@@ -52,7 +53,9 @@ export const forms = () => {
         if ((input.name === "fio" && input.value.trim().length > 1 && /^([а-яА-ЯёЁa-zA-Z\s]*)$/.test(input.value))
           || (input.name === "phone"  && /^([\d\+]*)\d$/.test(input.value) && input.value.trim().match(/\d/g).length < 17)) {
           input.classList.add ("success");
+          input.classList.remove("error")
         } else {
+          input.classList.remove ("success");
           input.classList.add("error") ;  
         }
       };
