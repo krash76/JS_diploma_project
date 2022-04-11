@@ -10,7 +10,7 @@ export const servicesSlider = () => {
   
   const isActive = () => {
     slides.forEach((slide) => {
-      if (slide.classList.contains("active")){
+      if (slide.classList.contains("active")) {
         slide.style.display = "block";
         slide.style.margin = "auto"
       } else {
@@ -59,7 +59,9 @@ export const servicesSlider = () => {
         nextSlide(slides,currentSlideIndex + 1);
         
       } else if (slides.length % 2 === 1 && currentSlideIndex > (slides.length-2)){
-        nextSlide(slides,currentSlideIndex);
+        nextSlide(slides,slides.length-1);
+        //const sliderBlock = arrowsBlock.closest(".row");
+        slides[slides.length - 1].setAttribute("style", "min-width: 1200px");
         
       };
       isActive();
@@ -123,7 +125,5 @@ export const servicesSlider = () => {
     showSlides();
     
   });
-
-
 }
 

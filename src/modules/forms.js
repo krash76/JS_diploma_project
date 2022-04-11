@@ -3,7 +3,7 @@ export const forms = () => {
   const allForms = document.querySelectorAll("form");
   
   allForms.forEach((form) => {
-    console.log(form)
+    
     const nameInput = form.querySelector('input[name="fio"]');
     const phoneInput = form.querySelector('input[name="phone"]');
     const pageInput = form.querySelector('input[name="page"]');
