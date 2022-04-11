@@ -6,9 +6,18 @@ export const forms = () => {
     const nameInput = form.querySelector('input[name="fio"]');
     const phoneInput = form.querySelector('input[name="phone"]');
     const pageInput = form.querySelector('input[name="page"]');
-
+    nameInput.classList.add ("error");
+    phoneInput.classList.add ("error");
     
+    const inputSuccess = (input) => {
+        if ((input.name === "fio" && input.value.trim().length > 1 && /^([а-яА-ЯёЁa-zA-Z\s]*)$/.test(input.value))
+          || (input.name === "phone" && /^([\d\+]*)\d$/.test(input.value) && input.value.trim().match(/\d/g).length < 17)) {
+          input.classList.remove("error");
+        }
+      };
+
     form.addEventListener("input", (e) => {
+      inputSuccess(e.target.value);
       if (e.target === nameInput) {
         e.target.value = e.target.value.replace(/[^а-яёa-z\s]/ig, "");
       };
@@ -30,11 +39,19 @@ export const forms = () => {
         }
       } else {
         const calcTotal = document.getElementById("calc-total");
-        userData = {
+        if (calcTotal.value !== "") {
+          userData = {
           name: nameInput.value,
           tel: phoneInput.value,
           page:pageInput.value,
           calcTotal: calcTotal.value
+          }
+        } else {
+          userData = {
+          name: nameInput.value,
+          tel: phoneInput.value,
+          page:pageInput.value
+          }
         }
       };
           
@@ -42,24 +59,14 @@ export const forms = () => {
         let success = true;
           list.forEach(input => {
           inputSuccess(input);
-          if (!input.classList.contains("success")) {
+          if (input.classList.contains("error")) {
             success = false;
           } 
         })
-        return success
+        return success;
       };
 
-      const inputSuccess = (input) => {
-        if ((input.name === "fio" && input.value.trim().length > 1 && /^([а-яА-ЯёЁa-zA-Z\s]*)$/.test(input.value))
-          || (input.name === "phone"  && /^([\d\+]*)\d$/.test(input.value) && input.value.trim().match(/\d/g).length < 17)) {
-          input.classList.add ("success");
-          input.classList.remove("error")
-        } else {
-          input.classList.remove ("success");
-          input.classList.add("error") ;  
-        }
-      };
-    
+          
       const sendData = (data) => {
         return fetch("https://jsonplaceholder.typicode.com/posts", {
           method: "POST",
@@ -75,8 +82,7 @@ export const forms = () => {
         .then(data => {
           formElements.forEach(input => {
             input.value = "";
-            input.classList.remove("error"); 
-            input.classList.remove ("success"); 
+            input.classList.add("error"); 
           })
         })
         .catch(error => {
