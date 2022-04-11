@@ -1,7 +1,7 @@
 export const servicesSlider = () => {
 
   const arrows = document.querySelectorAll(".services__arrow");
-  const slides = document.querySelectorAll(".service-block");
+  const slides = document.querySelectorAll(".col-md-12.col-lg-6");
   const arrowsBlock = document.querySelector(".services-arrows");
 
   arrowsBlock.setAttribute("style", "padding-top: 25px");
@@ -37,7 +37,7 @@ export const servicesSlider = () => {
 
   const showSlides = () => {
     if (window.screen.width >= 576 ) {
-      if ( currentSlideIndex > (slides.length-2)) {
+      if ( currentSlideIndex > (slides.length-1)) {
         currentSlideIndex = 0
       };
       if (currentSlideIndex < 0 ) {
