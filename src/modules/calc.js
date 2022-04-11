@@ -11,7 +11,7 @@ export const calc = () => {
     const totalLabel = document.querySelector('label[for="calc-total"]')
     let total;
     
-    totalLabel.textContent = "Итого (тыс. руб)"
+    totalLabel.textContent = "Итого (руб)"
         
     calcInput.addEventListener("input", (e) => {
       e.target.value = e.target.value.replace(/[^\d]/ig, "");
@@ -19,7 +19,7 @@ export const calc = () => {
 
     const toCalcTotal = () => {
       if (calcType.value !== "--" && calcTypeMaterial.value !== "--" && calcInput.value > 0) {
-        total = calcType.value * calcTypeMaterial.value * calcInput.value;
+        total = calcType.value * calcTypeMaterial.value * calcInput.value * 1000;
         calcTotal.value = Math.floor(total);
       } else {
         calcTotal.value = "";
