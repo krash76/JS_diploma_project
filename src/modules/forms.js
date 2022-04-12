@@ -12,7 +12,7 @@ export const forms = () => {
 
     const inputSuccess = (input) => {
       if ((input.name === "fio" && input.value.trim().length > 1 && /^([а-яА-ЯёЁa-zA-Z\s]*)$/.test(input.value))
-        || (input.name === "phone" && /^([\d\+]*)\d$/.test(input.value) && input.value.trim().match(/\d/g).length < 17)) {
+        || (input.name === "phone" && /^([\d\+]*)\d$/.test(input.value) && input.value.trim().match(/\d/g).length < 17 && input.value.trim().match(/\d/g).length > 6)) {
         input.classList.remove("error");
       } else {
         input.classList.add("error");
