@@ -5,8 +5,8 @@ import {certificateModal} from "./modules/certificateModal.js";
 import {benefitsSlider} from "./modules/benefitsSlider.js";
 import {toScrollUp} from "./modules/scroll.js";
 import {calc} from "./modules/calc.js";
-import {servicesSlider} from "./modules/servicesSlider.js";
-//import {servSlider} from "./modules/servSlider.js";
+//import {servicesSlider} from "./modules/servicesSlider.js";
+import {servSlider} from "./modules/servSlider.js";
 
 import {forms} from "./modules/forms.js";
 
@@ -35,7 +35,7 @@ certificateModal();
 benefitsSlider();
 toScrollUp();
 calc();
-servicesSlider();
-//servSlider();
+//servicesSlider();
+servSlider();
 
 forms();

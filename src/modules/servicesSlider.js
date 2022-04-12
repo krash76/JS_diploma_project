@@ -60,7 +60,6 @@ export const servicesSlider = () => {
         
       } else if (slides.length % 2 === 1 && currentSlideIndex > (slides.length-2)){
         nextSlide(slides,slides.length-1);
-        //const sliderBlock = arrowsBlock.closest(".row");
         slides[slides.length - 1].setAttribute("style", "min-width: 1200px");
         
       };
